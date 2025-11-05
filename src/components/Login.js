@@ -37,7 +37,7 @@ const Login = ({ onLogin }) => {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label className="block text-sm font-medium text-foreground mb-2">
-                Username
+                User-name
               </label>
               <input
                 type="text"
