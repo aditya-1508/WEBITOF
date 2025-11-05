@@ -1,38 +1,72 @@
-.App {
-  text-align: center;
+/* General Styles */
+
+button {
+  @apply bg-blue-500 text-white border-none py-2 px-4 mx-1 cursor-pointer rounded;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+button:hover {
+  @apply bg-blue-700;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+input, select, textarea {
+  @apply block w-full p-2 my-1 border border-gray-300 rounded;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+table {
+  @apply w-full border-collapse mt-5;
 }
 
-.App-link {
-  color: #61dafb;
+th, td {
+  @apply border border-gray-300 p-2 text-left;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+th {
+  @apply bg-gray-100;
+}
+
+/* Login Styles */
+.login-container {
+  @apply max-w-md mx-auto my-12 p-5 border border-gray-300 rounded-lg;
+}
+
+.error {
+  @apply text-red-500 mb-2;
+}
+
+.user-info {
+  @apply flex items-center;
+}
+
+.stats-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-5;
+}
+
+.stat-card {
+  @apply bg-gray-100 p-5 rounded-lg text-center;
+}
+
+.navigation {
+  @apply flex flex-wrap gap-2;
+}
+
+/* Form Styles */
+form {
+  @apply bg-gray-100 p-5 rounded-lg mb-5;
+}
+
+form h3 {
+  @apply mt-0;
+}
+
+/* Reports Styles */
+.stats-overview {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8;
+}
+
+.charts {
+  @apply grid grid-cols-1 lg:grid-cols-2 gap-5;
+}
+
+.chart {
+  @apply bg-gray-100 p-5 rounded-lg;
 }
