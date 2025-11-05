@@ -106,6 +106,8 @@ const LeadManagement = ({ user, onLogout }) => {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchLeads();
+      // Refresh stats after conversion
+      if (window.fetchStats) window.fetchStats();
       toast.success("✅ Converted to client");
     } catch {
       toast.error("❌ Conversion failed");

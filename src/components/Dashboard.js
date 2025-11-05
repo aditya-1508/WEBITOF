@@ -1,28 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import { LogOut, Users, FileText, UserCheck, FolderKanban, BarChart3 } from 'lucide-react';
+import { useStats } from '../contexts/StatsContext';
 
 const Dashboard = ({ user, onLogout }) => {
-  const [stats, setStats] = useState({});
+  const { stats, fetchStats } = useStats();
 
   useEffect(() => {
-    const fetchStats = async () => {
-      try {
-        const token = localStorage.getItem('token');
-        const response = await axios.get('https://webitofbackend-1.onrender.com/reports/overview', {
-          headers: { Authorization: `Bearer ${token}` }
-        });
-        setStats(response.data);
-      } catch (err) {
-        console.error('Error fetching stats:', err);
-      }
-    };
-
     if (user.role === 'Admin' || user.role === 'Staff') {
       fetchStats();
     }
-  }, [user]);
+  }, [user, fetchStats]);
 
   const handleLogout = () => {
     localStorage.removeItem('token');

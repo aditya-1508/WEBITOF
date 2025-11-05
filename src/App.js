@@ -9,6 +9,7 @@ import ClientManagement from './components/ClientManagement';
 import ProjectManagement from './components/ProjectManagement';
 import Reports from './components/Reports';
 import { ClientsProvider } from './contexts/ClientsContext';
+import { StatsProvider } from './contexts/StatsContext';
 import './App.css';
 
 function App() {
@@ -31,22 +32,24 @@ function App() {
   };
 
   return (
-    <ClientsProvider>
-      <Router>
-        <div className="App">
-          <Routes>
-            <Route path="/login" element={user ? <Navigate to="/" /> : <Login onLogin={handleLogin} />} />
-            <Route path="/" element={user ? <Dashboard user={user} onLogout={handleLogout} /> : <Navigate to="/login" />} />
-            <Route path="/users" element={user ? <UserManagement user={user} onLogout={handleLogout} /> : <Navigate to="/login" />} />
-            <Route path="/leads" element={(user?.role === 'Admin' || user?.role === 'Staff') ? <LeadManagement user={user} onLogout={handleLogout} /> : <Navigate to="/" />} />
-            <Route path="/clients" element={(user?.role === 'Admin' || user?.role === 'Staff') ? <ClientManagement user={user} onLogout={handleLogout} /> : <Navigate to="/" />} />
-            <Route path="/projects" element={(user?.role === 'Admin' || user?.role === 'Staff') ? <ProjectManagement user={user} onLogout={handleLogout} /> : <Navigate to="/" />} />
-            <Route path="/reports" element={(user?.role === 'Admin' || user?.role === 'Staff') ? <Reports user={user} onLogout={handleLogout} /> : <Navigate to="/" />} />
-          </Routes>
-          <Toaster position="top-right" />
-        </div>
-      </Router>
-    </ClientsProvider>
+    <StatsProvider>
+      <ClientsProvider>
+        <Router>
+          <div className="App">
+            <Routes>
+              <Route path="/login" element={user ? <Navigate to="/" /> : <Login onLogin={handleLogin} />} />
+              <Route path="/" element={user ? <Dashboard user={user} onLogout={handleLogout} /> : <Navigate to="/login" />} />
+              <Route path="/users" element={user ? <UserManagement user={user} onLogout={handleLogout} /> : <Navigate to="/login" />} />
+              <Route path="/leads" element={(user?.role === 'Admin' || user?.role === 'Staff') ? <LeadManagement user={user} onLogout={handleLogout} /> : <Navigate to="/" />} />
+              <Route path="/clients" element={(user?.role === 'Admin' || user?.role === 'Staff') ? <ClientManagement user={user} onLogout={handleLogout} /> : <Navigate to="/" />} />
+              <Route path="/projects" element={(user?.role === 'Admin' || user?.role === 'Staff') ? <ProjectManagement user={user} onLogout={handleLogout} /> : <Navigate to="/" />} />
+              <Route path="/reports" element={(user?.role === 'Admin' || user?.role === 'Staff') ? <Reports user={user} onLogout={handleLogout} /> : <Navigate to="/" />} />
+            </Routes>
+            <Toaster position="top-right" />
+          </div>
+        </Router>
+      </ClientsProvider>
+    </StatsProvider>
   );
 }
 
