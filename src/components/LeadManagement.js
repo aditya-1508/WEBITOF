@@ -211,7 +211,7 @@ const LeadManagement = ({ user, onLogout }) => {
                   <label className="text-sm text-gray-400">Assigned Staff</label>
                   <select
                     className="mt-1 w-full bg-gray-600 border border-gray-500 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 px-3 py-2"
-                    value={editingLead ? editingLead.assignedStaff : newLead.assignedStaff}
+                    value={editingLead ? editingLead.assignedStaff?._id || editingLead.assignedStaff : newLead.assignedStaff}
                     onChange={(e) =>
                       editingLead
                         ? setEditingLead({ ...editingLead, assignedStaff: e.target.value })
