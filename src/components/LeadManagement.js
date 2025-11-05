@@ -102,7 +102,7 @@ const LeadManagement = ({ user, onLogout }) => {
     if (!window.confirm("Convert to client?")) return;
     try {
       const token = localStorage.getItem("token");
-      await axios.post(`https://webitofbackend-1.onrender.com/${id}/convert`, {}, {
+      await axios.post(`https://webitofbackend-1.onrender.com/leads/${id}/convert`, {}, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchLeads();
