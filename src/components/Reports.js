@@ -34,7 +34,7 @@ const Reports = ({ user, onLogout }) => {
   const fetchStats = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:3000/reports/overview', {
+      const response = await axios.get('https://webitofbackend-1.onrender.com/reports/overview', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setStats(response.data);

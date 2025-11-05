@@ -36,7 +36,7 @@ const LeadManagement = ({ user, onLogout }) => {
   const fetchStaff = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get("http://localhost:3000/users/staff", {
+      const res = await axios.get("https://webitofbackend-1.onrender.com/users/staff", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setStaff(res.data);
@@ -46,7 +46,7 @@ const LeadManagement = ({ user, onLogout }) => {
   const fetchLeads = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get("http://localhost:3000/leads", {
+      const res = await axios.get("https://webitofbackend-1.onrender.com/leads", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setLeads(res.data);
@@ -57,7 +57,7 @@ const LeadManagement = ({ user, onLogout }) => {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
-      await axios.post("http://localhost:3000/leads", newLead, {
+      await axios.post("https://webitofbackend-1.onrender.com/leads", newLead, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setNewLead({ name: "", email: "", phone: "", stage: "New", notes: "", assignedStaff: "" });
@@ -73,7 +73,7 @@ const LeadManagement = ({ user, onLogout }) => {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
-      await axios.put(`http://localhost:3000/leads/${editingLead._id}`, editingLead, {
+      await axios.put(`https://webitofbackend-1.onrender.com/leads/${editingLead._id}`, editingLead, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setEditingLead(null);
@@ -88,7 +88,7 @@ const LeadManagement = ({ user, onLogout }) => {
     if (!window.confirm("Delete this lead?")) return;
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:3000/leads/${id}`, {
+      await axios.delete(`https://webitofbackend-1.onrender.com/leads/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchLeads();
@@ -102,7 +102,7 @@ const LeadManagement = ({ user, onLogout }) => {
     if (!window.confirm("Convert to client?")) return;
     try {
       const token = localStorage.getItem("token");
-      await axios.post(`http://localhost:3000/leads/${id}/convert`, {}, {
+      await axios.post(`https://webitofbackend-1.onrender.com/${id}/convert`, {}, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchLeads();

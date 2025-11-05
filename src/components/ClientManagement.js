@@ -19,7 +19,7 @@ const ClientManagement = ({ user, onLogout }) => {
   const fetchStaff = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:3000/users/staff', {
+      const response = await axios.get('https://webitofbackend-1.onrender.com//users/staff', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setStaff(response.data);

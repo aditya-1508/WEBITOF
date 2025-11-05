@@ -19,7 +19,7 @@ export const ClientsProvider = ({ children }) => {
     setLoading(true);
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:3000/clients', {
+      const response = await axios.get('https://webitofbackend-1.onrender.com/clients', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setClients(response.data);
@@ -33,7 +33,7 @@ export const ClientsProvider = ({ children }) => {
   const addClient = async (newClient) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.post('http://localhost:3000/clients', newClient, {
+      const response = await axios.post('https://webitofbackend-1.onrender.com/clients', newClient, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setClients(prev => [...prev, response.data.client]);
@@ -47,7 +47,7 @@ export const ClientsProvider = ({ children }) => {
   const updateClient = async (clientId, updatedClient) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.put(`http://localhost:3000/clients/${clientId}`, updatedClient, {
+      const response = await axios.put(`https://webitofbackend-1.onrender.com/clients/${clientId}`, updatedClient, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setClients(prev => prev.map(client => client._id === clientId ? response.data.client : client));
@@ -61,7 +61,7 @@ export const ClientsProvider = ({ children }) => {
   const removeClient = async (clientId) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:3000/clients/${clientId}`, {
+      await axios.delete(`https://webitofbackend-1.onrender.com/clients/${clientId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setClients(prev => prev.filter(client => client._id !== clientId));

@@ -17,7 +17,7 @@ const UserManagement = ({ user, onLogout }) => {
   const fetchUsers = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:3000/users', {
+      const response = await axios.get('https://webitofbackend-1.onrender.com/users', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setUsers(response.data);
@@ -30,7 +30,7 @@ const UserManagement = ({ user, onLogout }) => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:3000/users', newUser, {
+      await axios.post('https://webitofbackend-1.onrender.com/users', newUser, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setNewUser({ username: '', password: '', email: '', role: 'Client' });
@@ -47,7 +47,7 @@ const UserManagement = ({ user, onLogout }) => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`http://localhost:3000/users/${editingUser._id}`, editingUser, {
+      await axios.put(`https://webitofbackend-1.onrender.com/users/${editingUser._id}`, editingUser, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setEditingUser(null);
@@ -63,7 +63,7 @@ const UserManagement = ({ user, onLogout }) => {
     if (window.confirm('Are you sure you want to delete this user?')) {
       try {
         const token = localStorage.getItem('token');
-        await axios.delete(`http://localhost:3000/users/${id}`, {
+        await axios.delete(`https://webitofbackend-1.onrender.com/users/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         fetchUsers();
