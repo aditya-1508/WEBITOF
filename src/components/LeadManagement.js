@@ -192,7 +192,7 @@ const LeadManagement = ({ user, onLogout }) => {
               <div>
                 <label className="text-sm text-gray-400">Stage</label>
                 <select
-                  className="mt-1 w-full bg-[#0E1114] border border-gray-700 rounded-lg px-3 py-2"
+                  className="mt-1 w-full bg-gray-600 border border-gray-500 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 px-3 py-2"
                   value={editingLead ? editingLead.stage : newLead.stage}
                   onChange={(e) =>
                     editingLead
@@ -210,7 +210,7 @@ const LeadManagement = ({ user, onLogout }) => {
                 <div>
                   <label className="text-sm text-gray-400">Assigned Staff</label>
                   <select
-                    className="mt-1 w-full bg-[#0E1114] border border-gray-700 rounded-lg px-3 py-2"
+                    className="mt-1 w-full bg-gray-600 border border-gray-500 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 px-3 py-2"
                     value={editingLead ? editingLead.assignedStaff : newLead.assignedStaff}
                     onChange={(e) =>
                       editingLead
@@ -259,7 +259,8 @@ const LeadManagement = ({ user, onLogout }) => {
 
         {/* Table */}
         <div className="bg-[#1A1D22] border border-gray-700 rounded-xl overflow-hidden">
-          <table className="w-full">
+          <div className="overflow-x-auto">
+            <table className="w-full">
             <thead className="bg-[#22262C] text-gray-400 text-sm">
               <tr>
                 {["Name", "Email", "Phone", "Stage", "Staff", "Actions"].map((h) => (
@@ -297,7 +298,8 @@ const LeadManagement = ({ user, onLogout }) => {
               ))}
             </tbody>
 
-          </table>
+            </table>
+          </div>
         </div>
 
       </main>

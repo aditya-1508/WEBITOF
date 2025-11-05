@@ -156,7 +156,7 @@ const ClientManagement = ({ user, onLogout }) => {
                 <div className="md:col-span-2">
                   <label className="text-sm text-gray-400">Assigned Staff</label>
                   <select
-                    className="mt-1 w-full bg-[#0E1114] border border-gray-700 rounded-lg px-3 py-2"
+                    className="mt-1 w-full bg-gray-600 border border-gray-500 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 px-3 py-2"
                     value={editingClient ? editingClient.assignedStaff : newClient.assignedStaff}
                     onChange={(e) =>
                       editingClient
@@ -190,7 +190,8 @@ const ClientManagement = ({ user, onLogout }) => {
 
         {/* Table */}
         <div className="bg-[#1A1D22] border border-gray-700 rounded-xl overflow-hidden">
-          <table className="w-full">
+          <div className="overflow-x-auto">
+            <table className="w-full">
             <thead className="bg-[#22262C] text-gray-400 text-sm">
               <tr>
                 {["Name", "Email", "Phone", "Company", "Address", "Assigned", "Actions"].map(h => (
@@ -220,7 +221,8 @@ const ClientManagement = ({ user, onLogout }) => {
               ))}
             </tbody>
 
-          </table>
+            </table>
+          </div>
         </div>
 
       </main>

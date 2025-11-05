@@ -22,7 +22,7 @@ const ProjectManagement = ({ user, onLogout }) => {
   const fetchStaff = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:3000/users/staff', {
+      const response = await axios.get('https://webitofbackend-1.onrender.com/users/staff', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setStaff(response.data);
@@ -34,7 +34,7 @@ const ProjectManagement = ({ user, onLogout }) => {
   const fetchProjects = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:3000/projects', {
+      const response = await axios.get('https://webitofbackend-1.onrender.com/projects', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setProjects(response.data);
@@ -46,7 +46,7 @@ const ProjectManagement = ({ user, onLogout }) => {
   const fetchClients = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:3000/clients', {
+      const response = await axios.get('https://webitofbackend-1.onrender.com/clients', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setClients(response.data);
@@ -68,7 +68,7 @@ const ProjectManagement = ({ user, onLogout }) => {
       if (!Array.isArray(projectData.assignedStaff)) {
         projectData.assignedStaff = projectData.assignedStaff ? [projectData.assignedStaff] : [];
       }
-      await axios.post('http://localhost:3000/projects', projectData, {
+      await axios.post('https://webitofbackend-1.onrender.com/projects', projectData, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setNewProject({ title: '', description: '', client: '', status: 'Planning', priority: 'Medium', assignedStaff: [] });
@@ -83,7 +83,7 @@ const ProjectManagement = ({ user, onLogout }) => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`http://localhost:3000/projects/${editingProject._id}`, editingProject, {
+      await axios.put(`https://webitofbackend-1.onrender.com/projects/${editingProject._id}`, editingProject, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setEditingProject(null);
@@ -97,7 +97,7 @@ const ProjectManagement = ({ user, onLogout }) => {
     if (window.confirm('Are you sure you want to delete this project?')) {
       try {
         const token = localStorage.getItem('token');
-        await axios.delete(`http://localhost:3000/projects/${id}`, {
+        await axios.delete(`https://webitofbackend-1.onrender.com/projects/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         fetchProjects();
@@ -212,7 +212,7 @@ const ProjectManagement = ({ user, onLogout }) => {
                       placeholder="Project Title"
                       value={editingProject ? editingProject.title : newProject.title}
                       onChange={(e) => editingProject ? setEditingProject({...editingProject, title: e.target.value}) : setNewProject({...newProject, title: e.target.value})}
-                      className="w-full px-3 py-2 bg-[#2A2D31] border border-gray-600 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 py-2 bg-gray-600 border border-gray-500 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
                       required
                     />
                   </div>
@@ -221,7 +221,7 @@ const ProjectManagement = ({ user, onLogout }) => {
                     <select
                       value={editingProject ? editingProject.client : newProject.client}
                       onChange={(e) => editingProject ? setEditingProject({...editingProject, client: e.target.value}) : setNewProject({...newProject, client: e.target.value})}
-                      className="w-full px-3 py-2 bg-[#2A2D31] border border-gray-600 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 py-2 bg-gray-600 border border-gray-500 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
                       required
                     >
                       <option value="">Select Client</option>
@@ -235,7 +235,7 @@ const ProjectManagement = ({ user, onLogout }) => {
                     <select
                       value={editingProject ? editingProject.status : newProject.status}
                       onChange={(e) => editingProject ? setEditingProject({...editingProject, status: e.target.value}) : setNewProject({...newProject, status: e.target.value})}
-                      className="w-full px-3 py-2 bg-[#2A2D31] border border-gray-600 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 py-2 bg-gray-600 border border-gray-500 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     >
                       <option value="Planning">Planning</option>
                       <option value="In Progress">In Progress</option>
@@ -249,7 +249,7 @@ const ProjectManagement = ({ user, onLogout }) => {
                     <select
                       value={editingProject ? editingProject.priority : newProject.priority}
                       onChange={(e) => editingProject ? setEditingProject({...editingProject, priority: e.target.value}) : setNewProject({...newProject, priority: e.target.value})}
-                      className="w-full px-3 py-2 bg-[#2A2D31] border border-gray-600 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 py-2 bg-gray-600 border border-gray-500 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     >
                       <option value="Low">Low</option>
                       <option value="Medium">Medium</option>
@@ -263,7 +263,7 @@ const ProjectManagement = ({ user, onLogout }) => {
                       placeholder="Project description and details"
                       value={editingProject ? editingProject.description : newProject.description}
                       onChange={(e) => editingProject ? setEditingProject({...editingProject, description: e.target.value}) : setNewProject({...newProject, description: e.target.value})}
-                      className="w-full px-3 py-2 bg-[#2A2D31] border border-gray-600 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                      className="w-full px-3 py-2 bg-gray-600 border border-gray-500 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
                       rows="3"
                       required
                     />
@@ -281,7 +281,7 @@ const ProjectManagement = ({ user, onLogout }) => {
                             const selectedOptions = Array.from(e.target.selectedOptions, option => option.value);
                             editingProject ? setEditingProject({...editingProject, assignedStaff: selectedOptions}) : setNewProject({...newProject, assignedStaff: selectedOptions});
                           }}
-                          className="w-full px-3 py-2 bg-[#2A2D31] border border-gray-600 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full px-3 py-2 bg-gray-600 border border-gray-500 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         >
                           {staff.map(staffMember => (
                             <option key={staffMember._id} value={staffMember._id}>
@@ -296,7 +296,7 @@ const ProjectManagement = ({ user, onLogout }) => {
                             const value = e.target.value;
                             editingProject ? setEditingProject({...editingProject, assignedStaff: value ? [value] : []}) : setNewProject({...newProject, assignedStaff: value ? [value] : []});
                           }}
-                          className="w-full px-3 py-2 bg-[#2A2D31] border border-gray-600 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          className="w-full px-3 py-2 bg-gray-600 border border-gray-500 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         >
                           <option value="">Select Staff</option>
                           {staff.map(staffMember => (
